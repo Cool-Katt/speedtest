@@ -11,6 +11,7 @@ const XPATH_FIRST_LOGIN_BUTTON = '//span[contains(text(), "Login To Your Account
 async function speedtest() {
     const browser = await puppeteer.launch({product: 'firefox'});
     const page = await browser.newPage();
+    await page.setDefaultTimeout(59000);
     await page.goto("http://reporting.speedtest.net/")
     const [login] = await page.$x(XPATH_FIRST_LOGIN_BUTTON)
     if (login) {
