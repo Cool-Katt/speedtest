@@ -59,10 +59,10 @@ def cleanup():
 if __name__ == "__main__":
     try:
         runFetcher()
-    except RuntimeError as e:
+    except:
        print("Could not fetch data. Check if fetcher works")
-       raise
-
-    df = readFilesIntoDF()
-    insertDFIntoDB(df)
-    cleanup()
+       pass
+    finally:
+        df = readFilesIntoDF()
+        insertDFIntoDB(df)
+        cleanup()
